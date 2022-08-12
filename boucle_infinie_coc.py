@@ -24,10 +24,10 @@ async def demarage(config,connection_bdd,cocClient,discordClient):
     print("parcourt mb discord")        
     for member in discordClient.get_guild(config["id_serveur_discord"]).members:
         id_membre_discord=member.id
-        if member.bot or 830742603187617842 in map(lambda r:r.id,member.roles):#bot  ou padawan
+        if member.bot or 830742603187617842 in map(lambda r:r.id,member.roles) or 999717064946241556 in map(lambda r:r.id,member.roles) or 998664888153018428 in map(lambda r:r.id,member.roles):#bot  ou padawan ou storm ou clone
             continue
         tags_comptes_coc = [e[0] for e in connection_bdd.get_comptes_coc(id_membre_discord)]
-        if len(tags_comptes_coc)==0 and not 999717064946241556 in map(lambda r:r.id,member.roles) and not 998664888153018428 in map(lambda r:r.id,member.roles):#bot ou stormtrooper ou padawan:# sans comptes ajoutés
+        if len(tags_comptes_coc)==0 :#sans comptes ajoutés 
             await discordClient.get_channel(863026482576883742).send(f"cet utilisateur n'a pas de compte compte coc:<@{member.id}>")
             continue
             
