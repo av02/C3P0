@@ -19,7 +19,7 @@ async def claim(client_discord,
         [type]: [descriptio n]
     """
     if len(args) != 3 and len(message.mentions) != 1:
-        return await message.channel.send("nombre d'arguments incorect")
+        return await message.channel.send("nombre d'arguments incorrect")
     tag=coc.utils.correct_tag(args[1])
     idDiscord=message.mentions[0].id
     #on verifie qu'on a 3 arguments, la commande, le tag et qu'il y a bien une mention
