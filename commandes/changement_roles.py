@@ -29,6 +29,10 @@ async def maj_role(client_discord,discord_id,liste_hdv,*tags_clans_rejoints):
     liste_roles_clans_en_trop=list(set(liste_roles_clans_iniale)-set(liste_roles_clans_rejoints))
     liste_roles_clans_a_ajouter=list(set(liste_roles_clans_rejoints)-set(liste_roles_clans_iniale))
     
+    role_jedi=serveur_empire.get_role(729577094866141185)
+    role_storm=serveur_empire.get_role(729581221616812084)
+    
+    
     if liste_roles_clans_en_trop!=[]:
         roles = [role for role in serveur_empire.roles if role.id in liste_roles_clans_en_trop]
         try:
@@ -45,11 +49,13 @@ async def maj_role(client_discord,discord_id,liste_hdv,*tags_clans_rejoints):
             print("\033[91m Permissions manquantes pour ajouter des roles a:",compte_membre_discord.id)
         except discord.HTTPException:
             print("probleme résau avec la ajouter de roles a:",compte_membre_discord.id)
-    role_storm=serveur_empire.get_role(729581221616812084)
+    
+    
     if liste_roles_clans_rejoints==[]:#Cas stormtrooper
         try:
             await compte_membre_discord.add_roles(role_storm,reason="bot: pas de clans")
             await compte_membre_discord.remove_roles(*[role for role in serveur_empire.roles if role.id in config["roles_hdv"].values()])
+            await compte_membre_discord.remove_roles(role_jedi)
         except discord.Forbidden:
             print("\033[91m Permissions manquantes pour ajouter des roles a:",compte_membre_discord.id)
         except discord.HTTPException:
@@ -59,6 +65,7 @@ async def maj_role(client_discord,discord_id,liste_hdv,*tags_clans_rejoints):
         try:
             await compte_membre_discord.remove_roles(role_storm,reason="bot: clan rejoint")
             await compte_membre_discord.add_roles(*[role for role in serveur_empire.roles if role.id in roles_hdv ])
+            await compte_membre_discord.add_roles(role_jedi)
         except discord.Forbidden:
             print("\033[91m Permissions manquantes pour ajouter des roles a:",compte_membre_discord.id)
         except discord.HTTPException:
