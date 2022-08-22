@@ -31,6 +31,7 @@ class discordClient(discord.Client):
         self.cocClient.loop.add_signal_handler(signal.SIGTERM,lambda:self.handler_sigterm())
         
         
+        
     async def on_message(self,message):
         if message.author.bot or message.channel.guild== None or not message.content.startswith(config["Discord"]["prefix"]):
             return
