@@ -1,3 +1,4 @@
+from sys import prefix
 import discord
 import commandes.dispatch
 import database_outils
@@ -97,6 +98,21 @@ class discordClient(discord.Client):
                         await reacteur.add_roles(role)
                         count+=(reacteur.nick+", ")
             await message.channel.send(f"role{role}ajouté avec succès à:```{count}")
+        
+        if commande in [help]:
+            await message.channel.send(f"""commndes disponible:
+                                       ```-{prefix}ping
+                                       \n-{prefix}trophés #tag
+                                       \n-{prefix}claim #tag @joueur
+                                       \n-{prefix}unclaim #tag //dispo pour admins
+                                       \n-{prefix}add_clan #tag @&role //admins
+                                       \n-{prefix}scan //admin, avec moderation
+                                       \n-{prefix}gc [@joueur]   voir comptes d'un joueur
+                                       \n-{prefix}VL hdv [dips]  voir classement attaques
+                                       \n-{prefix}DL hdv         voir classement defs
+                                       \n-{prefix}CD             voir classement dons
+                                      
+                                       ```""")
 
 
 
