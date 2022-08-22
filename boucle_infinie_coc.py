@@ -2,7 +2,7 @@ import coc
 import coc.errors
 import database_outils
 import commandes.dispatch
-
+import asyncio
 
 
 
@@ -130,6 +130,7 @@ def boucle_infinie_coc(config,connection_bdd,discordClient,cocClient):
             print(f"ce membre a quitté/rejoint un clan:{member} avec son compte: {old.name}({old.tag})")
             if member is None or member.bot or 830742603187617842 in map(lambda r:r.id,member.roles):#bot  ou padawan
                 return
+            await asyncio.sleep(3600)
             tags_comptes_coc = [e[0] for e in connection_bdd.get_comptes_coc(compte_discord_id)]
             liste_clans_rejoint=[]
             liste_hdv=[] 
