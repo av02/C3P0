@@ -11,10 +11,14 @@ async def gc(DiscordClient, message,args):#TODO: ajouter le cas de l'autotag, pa
     Returns:
         [None]: [ne retourne rien]
     """    
-    if len(message.mentions)!=1:# cas nb de tags incoherents 
+    if len(message.mentions)>1:# cas nb de tags incoherents 
         return await message.channel.send("merci de tag __une__ personne")
-    idDiscord=message.mentions[0].id
-    pseudo = message.mentions[0].display_name
+    if len(message.mentions)==0:
+        idDiscord=message.author.id
+        pseudo=message.author.display_name
+    else:
+        idDiscord=message.mentions[0].id
+        pseudo = message.mentions[0].display_name
     liste_comptes =DiscordClient.connectionBDD.get_comptes_coc(idDiscord)
     
     if len(liste_comptes)==0:#cas pas dans bdd
