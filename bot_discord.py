@@ -99,7 +99,7 @@ class discordClient(discord.Client):
                         count+=(reacteur.nick+", ")
             await message.channel.send(f"role{role}ajouté avec succès à:```{count}")
         
-        if commande in [help]:
+        if commande in ["help"]:
             await message.channel.send(f"""commndes disponible:
                                        ```-{prefix}ping
                                        \n-{prefix}trophés #tag
