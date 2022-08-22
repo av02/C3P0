@@ -101,16 +101,16 @@ class discordClient(discord.Client):
         
         if commande in ["help"]:
             await message.channel.send(f"""commndes disponible:
-                                       ```-{prefix}ping
-                                       \n-{prefix}trophés #tag
-                                       \n-{prefix}claim #tag @joueur
-                                       \n-{prefix}unclaim #tag //dispo pour admins
-                                       \n-{prefix}add_clan #tag @&role //admins
-                                       \n-{prefix}scan //admin, avec moderation
-                                       \n-{prefix}gc [@joueur]   voir comptes d'un joueur
-                                       \n-{prefix}VL hdv [dips]  voir classement attaques
-                                       \n-{prefix}DL hdv         voir classement defs
-                                       \n-{prefix}CD             voir classement dons
+                                       ```-{config["Discord"]["prefix"]}ping
+                                       \n-{config["Discord"]["prefix"]}trophés #tag
+                                       \n-{config["Discord"]["prefix"]}claim #tag @joueur
+                                       \n-{config["Discord"]["prefix"]}unclaim #tag //dispo pour admins
+                                       \n-{config["Discord"]["prefix"]}add_clan #tag @&role //admins
+                                       \n-{config["Discord"]["prefix"]}scan //admin, avec moderation
+                                       \n-{config["Discord"]["prefix"]}gc [@joueur]   voir comptes d'un joueur
+                                       \n-{config["Discord"]["prefix"]}VL hdv [dips]  voir classement attaques
+                                       \n-{config["Discord"]["prefix"]}DL hdv         voir classement defs
+                                       \n-{config["Discord"]["prefix"]}CD             voir classement dons
                                       
                                        ```""")
 
