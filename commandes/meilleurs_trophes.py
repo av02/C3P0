@@ -11,3 +11,4 @@ async def maj_meilleurs_trophés(liste_joueurs:list,client_discord:discord.Clien
     for j in liste_joueurs[50:80]:
         message+=f"\n{j.trophies}:      {j.name}"
     await salon.send(message)
+    
