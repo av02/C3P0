@@ -7,7 +7,7 @@ import asyncio
 
 
 async def demarage(config,connection_bdd,cocClient,discordClient):
-    
+    liste_joueurs=[]
     tagsJoueurs=connection_bdd.get_all_tag()
     print("démarage")
     for tag in tagsJoueurs:
@@ -20,6 +20,9 @@ async def demarage(config,connection_bdd,cocClient,discordClient):
                                 clan=player.clan.tag if player.clan is not None else None,
                                 pseudo=player.name,
                                 town_hall=player.town_hall)
+            if player.clan is not None and player.clan.tag in config["liste_clan_empire"]:
+                    liste_joueurs.append(player)
+            
             
     print("parcourt mb discord")        
     for member in discordClient.get_guild(config["id_serveur_discord"]).members:
