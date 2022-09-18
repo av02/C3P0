@@ -19,7 +19,8 @@ class Clan_empire:
         self.tag = tag
         self.nom = nom
         self.id_role_associe = int(id_role_associe)
-
+    def __repr__(self):
+        return self.tag
 
     
 class Joueur_empire:
