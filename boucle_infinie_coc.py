@@ -22,6 +22,7 @@ async def demarage(config,connection_bdd,cocClient,discordClient):
             print(player,player.clan,"\n")
             
             
+            
             connection_bdd.maj_info(tag=player.tag,
                                 clan=player.clan.tag if player.clan is not None else None,
                                 pseudo=player.name,
