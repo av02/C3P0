@@ -33,6 +33,7 @@ async def demarage(config,connection_bdd,cocClient,discordClient):
     await commandes.dispatch.meilleurs_trophes.maj_meilleurs_trophés(liste_joueurs,discordClient)
             
             
+            
     print("parcourt mb discord")        
     for member in discordClient.get_guild(config["id_serveur_discord"]).members:
         id_membre_discord=member.id
