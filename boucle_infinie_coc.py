@@ -10,13 +10,17 @@ async def demarage(config,connection_bdd,cocClient,discordClient):
     liste_joueurs=[]
     tagsJoueurs=connection_bdd.get_all_tag()
     print("démarage")
+    print(config["liste_clan_empire"])
     for tag in tagsJoueurs:
         try:
             player = await cocClient.get_player(tag)
         except coc.errors.NotFound:
             await discordClient.get_user(397116327887896576).send(f"ce tag fous la merde:{tag}")
         else:
+            if player.clan is not None:
+                print(player.clan.tag)
             print(player,player.clan,"\n\n\n")
+            
             
             connection_bdd.maj_info(tag=player.tag,
                                 clan=player.clan.tag if player.clan is not None else None,
