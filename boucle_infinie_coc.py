@@ -27,7 +27,7 @@ async def demarage(config,connection_bdd,cocClient,discordClient):
                                 clan=player.clan.tag if player.clan is not None else None,
                                 pseudo=player.name,
                                 town_hall=player.town_hall)
-            if player.clan is not None and player.clan.tag in config["liste_clan_empire"]:
+            if player.clan is not None and player.clan.tag in [x.tag for x in config["liste_clan_empire"]]:
                     liste_joueurs.append(player)
                     print("ajoututé\n\n\n")
     await commandes.dispatch.meilleurs_trophes.maj_meilleurs_trophés(liste_joueurs,discordClient)
