@@ -16,13 +16,13 @@ async def demarage(config,connection_bdd,cocClient,discordClient):
         except coc.errors.NotFound:
             await discordClient.get_user(397116327887896576).send(f"ce tag fous la merde:{tag}")
         else:
-            print(player,"\n\n\n")
+            print(player,player.clan,"\n\n\n")
             
             connection_bdd.maj_info(tag=player.tag,
                                 clan=player.clan.tag if player.clan is not None else None,
                                 pseudo=player.name,
                                 town_hall=player.town_hall)
-            if player.clan is not None and player.clan.tag in config["liste_clan_empire"]:
+            if player.clan.tag is not None and player.clan.tag in config["liste_clan_empire"]:
                     liste_joueurs.append(player)
     await commandes.dispatch.meilleurs_trophes.maj_meilleurs_trophés(liste_joueurs,discordClient)
             
