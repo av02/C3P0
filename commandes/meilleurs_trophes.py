@@ -9,9 +9,9 @@ async def maj_meilleurs_trophés(liste_joueurs:list,client_discord:discord.Clien
     print(liste_joueurs)
     for i,j in enumerate(liste_joueurs[0:50]):
         
-        message+=f"\n{i+1}:{j.trophies} trophés:      {j.name}"
+        message+=f"\n{i+1}:{j.trophies} tr:   {j.name}"
     message+="\n50"+"-"*10
     for i,j in enumerate(liste_joueurs[50:80]):
-        message+=f"\n{i+51}:{j.trophies} trophés:      {j.name}"
+        message+=f"\n{i+51}:{j.trophies} tr:   {j.name}"
     await salon.send(message)
     
