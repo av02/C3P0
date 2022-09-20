@@ -27,10 +27,10 @@ async def maj_meilleurs_trophés(liste_joueurs:list,client_discord:discord.Clien
     for i,j in enumerate(liste_joueurs[0:50]):
         
         
-        message+=f"\n{display_str_calibrated(str(i+1),2)}|{j.trophies}🏆|{display_str_calibrated(j.name,20)}|{j.clan.name}"
-    message+="\n_______________Fin des sélections"+"-"*10
+        message+=f"\n{display_str_calibrated(str(i+1),2)}|{j.trophies}🏆|{display_str_calibrated(j.name,20)}\n             {j.clan.name}"
+    message+="\n_______________Fin des sélections"
     for i,j in enumerate(liste_joueurs[50:70]):
-        message+=f"\n{display_str_calibrated(str(i+51),2)}|{j.trophies}🏆|{display_str_calibrated(j.name,20)}|{j.clan.name}"
+        message+=f"\n{display_str_calibrated(str(i+51),2)}|{j.trophies}🏆|{display_str_calibrated(j.name,20)}\n             {j.clan.name}"
     message+="```"
     embed = discord.Embed(colour=0xf6c471,description=message)
     embed.set_author(name=f"Liste des plus hauts trophés de l'empire :")
