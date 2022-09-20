@@ -3,7 +3,7 @@ import discord
 
 
 async def maj_meilleurs_trophés(liste_joueurs:list,client_discord:discord.Client):
-    salon = client_discord.get_channel(859386512129654794)
+    salon = client_discord.get_channel(1021466591961038868)
     liste_joueurs.sort(key=lambda x:x.trophies,reverse=True)
     
     
