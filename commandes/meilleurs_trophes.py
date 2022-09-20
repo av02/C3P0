@@ -7,6 +7,7 @@ async def maj_meilleurs_trophés(liste_joueurs:list,client_discord:discord.Clien
     liste_joueurs.sort(key=lambda x:x.trophies,reverse=True)
     
     
+    
     message=""
     for i,j in enumerate(liste_joueurs[0:50]):
         
