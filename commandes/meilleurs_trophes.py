@@ -37,3 +37,4 @@ async def maj_meilleurs_trophés(liste_joueurs:list,client_discord:discord.Clien
     embed.set_footer(text="Développement av#2616 | Design YohKun#7447 | Empire Galactique",icon_url="https://cdn.discordapp.com/avatars/397116327887896576/93f6ce8dde153200b213ba4ec531dd8f.webp?size=128")
     await salon.send(embed=embed)
     
+    
