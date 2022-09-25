@@ -10,7 +10,7 @@ async def demarage(config,connection_bdd,cocClient,discordClient):
     liste_joueurs=[]
     tagsJoueurs=connection_bdd.get_all_tag()
     print("démarage")
-    print(config["liste_clan_empire"])
+    
     for tag in tagsJoueurs:
         try:
             player = await cocClient.get_player(tag)
@@ -19,7 +19,7 @@ async def demarage(config,connection_bdd,cocClient,discordClient):
         else:
             if player.clan is not None:
                 print(player.clan.tag)
-            print(player,player.clan,"\n")
+            
             
             
             
@@ -29,7 +29,7 @@ async def demarage(config,connection_bdd,cocClient,discordClient):
                                 town_hall=player.town_hall)
             if player.clan is not None and player.clan.tag in [x.tag for x in config["liste_clan_empire"]]:
                     liste_joueurs.append(player)
-                    print("ajoututé\n\n\n")
+                    
     await commandes.dispatch.meilleurs_trophes.maj_meilleurs_trophés(liste_joueurs,discordClient)
             
             
@@ -122,12 +122,11 @@ def boucle_infinie_coc(config,connection_bdd,discordClient,cocClient):
     @cocClient.event#mise a jour de la bdd quand un membre change de pseudo
     @coc.PlayerEvents.name(tags= tagsJoueurs)
     async def on_name_change(old,new):
-        print("\033[96mchnagement de nom",old.name,new.name)
         connection_bdd.edit_pseudo(old.tag,new.name)
     @cocClient.event# mise a jour de la bdd quand un membre change d'hdv
     @coc.PlayerEvents.town_hall(tags= tagsJoueurs)
     async def on_th_change(old,new):
-        print("\033[96mth change", old.town_hall,"pour:",old.name)
+        
         connection_bdd.up_hdv(old.tag,new.town_hall)
     
     
@@ -140,7 +139,6 @@ def boucle_infinie_coc(config,connection_bdd,discordClient,cocClient):
         compte_discord_id=connection_bdd.get_discord_id(old.tag)
         if compte_discord_id is not None:
             member = discordClient.get_guild(config["id_serveur_discord"]).get_member(compte_discord_id)
-            print(f"ce membre a quitté/rejoint un clan:{member} avec son compte: {old.name}({old.tag})")
             if member is None or member.bot or 830742603187617842 in map(lambda r:r.id,member.roles):#bot  ou padawan
                 return
             await asyncio.sleep(3600)
