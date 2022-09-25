@@ -28,7 +28,7 @@ def main():
     config["liste_clan_empire"]=connectionBDD.get_all_clans()
     #définition du bot
     discordClient=bot_discord.discordClient(connectionBDD,cocClient)
-    
+    #loop.call_at(when, callback)
     
     #lancement des evenements coc
     
